@@ -22,4 +22,4 @@ RUN go get github.com/golang/lint/golint
 RUN go get github.com/tools/godep
 RUN go get github.com/laher/goxc
 
-RUN goxc -bc="linux,\!arm darwin,amd64" -t
+RUN goxc -bc="linux,!arm darwin,amd64" -t
