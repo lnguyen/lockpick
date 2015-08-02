@@ -18,6 +18,8 @@ if [[ "${release_name}X" == "X" ]]; then
   exit 1
 fi
 
+godep restore
+
 echo Prepare github release information
 set -x
 mkdir -p releases

@@ -95,7 +95,7 @@ jobs:
       - name: lockpick
       - name: version
       run:
-        path: ./lockpick-boshrelease/ci/scripts/shipit.sh
+        path: ./lockpick/ci/scripts/shipit.sh
         args: []
       params:
         release_name: "Lockpick Release"
