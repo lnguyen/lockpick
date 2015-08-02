@@ -8,11 +8,16 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
+var configString = `
+app_id: foobar2
+user_id: myuserid
+key: mykeyid1
+output_file: ~/mygitcrypt.key
+vault_address: "https://127.0.0.1:8200"
+    `
+
 func TestConfigLocation(t *testing.T) {
 
-	if _, err := os.Stat(configLocation()); os.IsNotExist(err) {
-		ioutil.WriteFile(configLocation(), []byte(""), 0644)
-	}
 	Convey("Test Config Location", t, func() {
 		So(userHome()+"/.lockpick", ShouldEqual, configLocation())
 	})
@@ -27,13 +32,6 @@ func TestConfigLocation(t *testing.T) {
 func TestConfig(t *testing.T) {
 
 	Convey("Test Reading Config", t, func() {
-		configString := `
-app_id: foobar2
-user_id: myuserid
-key: mykeyid1
-output_file: ~/mygitcrypt.key
-vault_address: "https://127.0.0.1:8200"
-    `
 		configFile, err := ioutil.TempFile("", "lockpick")
 		So(err, ShouldEqual, nil)
 		configFile.WriteString(configString)

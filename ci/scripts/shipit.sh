@@ -18,6 +18,14 @@ if [[ "${release_name}X" == "X" ]]; then
   exit 1
 fi
 
+cat > ~/.lockpick << EOF
+app_id: foobar
+user_id: myuserid
+key: mykeyid
+output_file: ~/mygitcrypt.key
+vault_address: "https://127.0.0.1:8200"
+EOF
+
 godep restore
 
 echo Prepare github release information
