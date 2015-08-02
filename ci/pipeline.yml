@@ -19,16 +19,17 @@ jobs:
     - aggregate:
       - get: lockpick
         resource: git-lockpick
-      - get: git-lockpick-release-release-changes
+      - get: git-lockpick-release-changes
         trigger: true
     - task: run_tests
       config:
         platform: linux
         image: {{docker-hub-task-image}}
         inputs:
-        - {name: lockpick}
+        - name: lockpick
+          path: .
         run:
-          path: ./lockpick/ci/scripts/run_tests.sh
+          path: ./ci/scripts/run_tests.sh
           args: []
 
 - name: rc
@@ -99,7 +100,7 @@ jobs:
       params:
         release_name: "Lockpick Release"
         promotion_branch: master
-  - put: git-lockpick-release
+  - put: git-lockpick
     params:
       repository: create-final-release/lockpick-release
       rebase: true
@@ -140,8 +141,7 @@ resources:
   source:
     uri: https://github.com/longnguyen11288/lockpick.git
     branch: master
-    paths:
-      - *.go
+    paths: ["*.go"]
 
 - name: github-final-release
   type: github-release

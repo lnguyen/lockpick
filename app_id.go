@@ -13,6 +13,7 @@ type AppIDAuth struct {
 	token string
 }
 
+// LoginResponse object for login
 type LoginResponse struct {
 	LeaseID       string `json:"lease_id,omitempty"`
 	Renewable     bool   `json:"renewable,omitempty"`
@@ -22,10 +23,12 @@ type LoginResponse struct {
 	} `json:"auth,omitempty"`
 }
 
+// NewAppIDAuth create new app id
 func NewAppIDAuth(c *api.Client) *AppIDAuth {
 	return &AppIDAuth{c: c}
 }
 
+// Login to app id
 func (c *AppIDAuth) Login(vars map[string]string) error {
 	r := c.c.NewRequest("POST", "/v1/auth/app-id/login")
 	if err := r.SetJSONBody(vars); err != nil {
@@ -45,10 +48,12 @@ func (c *AppIDAuth) Login(vars map[string]string) error {
 	return nil
 }
 
+// Token returns token
 func (c *AppIDAuth) Token() string {
 	return c.token
 }
 
+// ParseLoginResponse parses login response
 func ParseLoginResponse(r io.Reader) (*LoginResponse, error) {
 	// First decode the JSON into a map[string]interface{}
 	var loginResponse LoginResponse
