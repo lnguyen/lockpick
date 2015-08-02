@@ -16,5 +16,7 @@ ENV GOROOT /goroot
 ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
-RUN go get github.com/bronze1man/yaml2json
-RUN go get github.com/cloudfoundry-community/humanize-manifest
+RUN go get golang.org/x/tools/cmd/vet
+RUN go get golang.org/x/tools/cmd/cover
+RUN go get github.com/golang/lint/golint
+
