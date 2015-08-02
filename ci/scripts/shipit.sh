@@ -26,6 +26,10 @@ output_file: ~/mygitcrypt.key
 vault_address: "https://127.0.0.1:8200"
 EOF
 
+cd ../
+cp -r lockpick $GOPATH/src/github/longnguyen11288/.
+pushd $GOPATH/src/github/longnguyen11288/lockpick
+
 godep restore
 
 echo Prepare github release information
