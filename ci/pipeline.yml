@@ -102,21 +102,21 @@ jobs:
         promotion_branch: master
   - put: git-lockpick
     params:
-      repository: create-final-release/lockpick-release
+      repository: create-final-release/lockpick
       rebase: true
   - aggregate:
     - put: version
       params: {file: version/number}
     - put: github-final-release
       params:
-        name: create-final-release/lockpick-boshrelease/releases/name
-        tag: create-final-release/lockpick-boshrelease/releases/tag
-        body: create-final-release/lockpick-boshrelease/releases/notes.md
+        name: create-final-release/lockpick/releases/name
+        tag: create-final-release/lockpick/releases/tag
+        body: create-final-release/lockpick/releases/notes.md
         globs:
-        - create-final-release/lockpick-boshrelease/releases/*/lockpick-*.tar.gz
-        - create-final-release/lockpick-boshrelease/releases/*/lockpick.zip
-        - create-final-release/lockpick-boshrelease/releases/*/LICENSE
-        - create-final-release/lockpick-boshrelease/releases/*/README.md
+        - create-final-release/lockpick/releases/*/lockpick-*.tar.gz
+        - create-final-release/lockpick/releases/*/lockpick.zip
+        - create-final-release/lockpick/releases/*/LICENSE
+        - create-final-release/lockpick/releases/*/README.md
 
 
 resources:

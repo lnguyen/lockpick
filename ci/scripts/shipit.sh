@@ -28,7 +28,7 @@ EOF
 
 cd ../
 mkdir -p $GOPATH/src/github/longnguyen11288/
-cp -r lockpick $GOPATH/src/github/longnguyen11288/.
+ln -s lockpick $GOPATH/src/github/longnguyen11288/lockpick
 pushd $GOPATH/src/github/longnguyen11288/lockpick
 
 godep restore
@@ -40,12 +40,4 @@ cp ci/release_notes.md releases/notes.md
 echo "${release_name} v${version}" > releases/name
 echo "v${version}" > releases/tag
 
-git config --global user.email "drnic+bot@starkandwayne.com"
-git config --global user.name "Stark and Wayne CI Bot"
-
-git merge --no-edit ${promotion_branch}
-
 goxc -bc="linux,!arm darwin,amd64" -d=releases -pv=${version}
-
-git add -A
-git commit -m "release v${version}"
