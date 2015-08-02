@@ -9,6 +9,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+//Config struct for config file
 type Config struct {
 	AppID        string `yaml:"app_id,omitempty"`
 	UserID       string `yaml:"user_id,omitempty"`
