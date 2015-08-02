@@ -19,6 +19,6 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 RUN go get golang.org/x/tools/cmd/vet
 RUN go get golang.org/x/tools/cmd/cover
 RUN go get github.com/golang/lint/golint
-RUN go get github.com/mitchellh/gox
+RUN go get github.com/laher/goxc
 
-RUN gox -build-toolchain
+RUN goxc -bc="linux,\!arm darwin,amd64" -t
