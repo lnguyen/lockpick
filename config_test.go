@@ -9,6 +9,10 @@ import (
 )
 
 func TestConfigLocation(t *testing.T) {
+
+	if _, err := os.Stat(configLocation()); os.IsNotExist(err) {
+		ioutil.WriteFile(configLocation(), []byte(""), 0644)
+	}
 	Convey("Test Config Location", t, func() {
 		So(userHome()+"/.lockpick", ShouldEqual, configLocation())
 	})
