@@ -28,7 +28,7 @@ EOF
 
 cd ../
 mkdir -p $GOPATH/src/github/longnguyen11288/
-ln -s lockpick $GOPATH/src/github/longnguyen11288/lockpick
+cp -r lockpick $GOPATH/src/github/longnguyen11288/.
 pushd $GOPATH/src/github/longnguyen11288/lockpick
 
 godep restore
@@ -41,3 +41,5 @@ echo "${release_name} v${version}" > releases/name
 echo "v${version}" > releases/tag
 
 goxc -bc="linux,!arm darwin,amd64" -d=releases -pv=${version}
+
+cp -r releases $DIR/../../.
