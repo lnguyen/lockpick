@@ -27,6 +27,7 @@ vault_address: "https://127.0.0.1:8200"
 EOF
 
 cd ../
+mkdir -p $GOPATH/src/github/longnguyen11288/
 cp -r lockpick $GOPATH/src/github/longnguyen11288/.
 pushd $GOPATH/src/github/longnguyen11288/lockpick
 
